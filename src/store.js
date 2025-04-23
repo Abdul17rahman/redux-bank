@@ -17,20 +17,22 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer);
 
-store.dispatch(deposit(1000));
-console.log(store.getState());
+export default store;
 
-store.dispatch(requestLoan(10000, "Buy a Car"));
-console.log(store.getState());
+// store.dispatch(deposit(1000));
+// console.log(store.getState());
 
-store.dispatch(payLoan());
-console.log(store.getState());
+// store.dispatch(requestLoan(10000, "Buy a Car"));
+// console.log(store.getState());
 
-store.dispatch(withdrawal(300));
-console.log(store.getState());
+// store.dispatch(payLoan());
+// console.log(store.getState());
 
-store.dispatch(createCustomer("Abdul", "abdul@gmail.com"));
-console.log(store.getState());
+// store.dispatch(withdrawal(300));
+// console.log(store.getState());
 
-store.dispatch(updateCustomer("Abdul Rahman"));
-console.log(store.getState());
+// store.dispatch(createCustomer("Abdul", "abdul@gmail.com"));
+// console.log(store.getState());
+
+// store.dispatch(updateCustomer("Abdul Rahman"));
+// console.log(store.getState());
