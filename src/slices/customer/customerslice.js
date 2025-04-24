@@ -3,6 +3,14 @@ const initialStateCustomer = {
   email: "",
 };
 
+function setData(key, value) {
+  const data = JSON.parse(localStorage.getItem("appData")) || {};
+
+  data[key] = value;
+
+  localStorage.setItem("appData", JSON.stringify(data));
+}
+
 export default function customerReducer(state = initialStateCustomer, action) {
   switch (action.type) {
     case "customer/createCustomer":
@@ -20,9 +28,19 @@ export default function customerReducer(state = initialStateCustomer, action) {
 }
 
 export function createCustomer(name, email) {
-  return { type: "customer/createCustomer", payload: { name, email } };
+  return function (dispatch, getState) {
+    dispatch({ type: "customer/createCustomer", payload: { name, email } });
+    const data = getState().customer;
+
+    setData("customer", data);
+  };
 }
 
 export function updateCustomer(name) {
-  return { type: "customer/update", payload: name };
+  return function (dispatch, getState) {
+    dispatch({ type: "customer/update", payload: name });
+    const data = getState().customer;
+
+    setData("customer", data);
+  };
 }
