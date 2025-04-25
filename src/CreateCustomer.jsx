@@ -9,7 +9,10 @@ function Customer() {
   const dispatch = useDispatch();
 
   function handleClick() {
-    dispatch(createCustomer(fullName, email));
+    if (!fullName || !email) return;
+    dispatch(createCustomer({ fullName, email }));
+    setFullName("");
+    setEmail("");
   }
 
   return (

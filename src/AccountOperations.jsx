@@ -19,16 +19,20 @@ function AccountOperations() {
   const dispatch = useDispatch();
 
   function handleDeposit() {
-    dispatch(deposit(depositAmount));
+    if (!depositAmount) return;
+    dispatch(deposit(depositAmount, currency));
+    setCurrency("USD");
     setDepositAmount("");
   }
 
   function handleWithdrawal() {
+    if (!withdrawalAmount) return;
     dispatch(withdrawal(withdrawalAmount));
     setWithdrawalAmount("");
   }
 
   function handleRequestLoan() {
+    if (!loanAmount) return;
     dispatch(requestLoan(loanAmount, loanPurpose));
     setLoanAmount("");
     setLoanPurpose("");
